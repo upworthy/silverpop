@@ -4,8 +4,9 @@ require 'client/contact'
 
 module SilverPop
   class Client
-    def initialize(access_token, options={})
-      @access_token = access_token
+    def initialize(options={})
+      @access_token = options[:access_token]
+      @silverpop_url = options[:url]
     end
 
     include SilverPop::Connection

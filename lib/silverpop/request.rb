@@ -12,7 +12,7 @@ module SilverPop
     # @return [XML] XML Body from the API call
     def request(method, body, options)
       response = connection.send(method) do |request|
-        request.url "/XMLAPI", options.merge(key: @key)
+        request.url "/XMLAPI"
         request.headers['Content-type'] = "text/xml"
         request.body = body
       end

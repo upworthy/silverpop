@@ -6,3 +6,4 @@ unless ENV['CI']
 end
 require 'silverpop'
 require 'rspec'
+require 'webmock/rspec'

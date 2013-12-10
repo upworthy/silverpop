@@ -6,15 +6,16 @@ module SilverPop
     private
 
     def connection(options={})
-      connection = Faraday.new(options.merge({url: 'https://api1.silverpop.com'})) do |builder|
+      connection = Faraday.new @silverpop_url do |conn|
         # Uncomment if want to log to stdout
-        #builder.response :logger
+        #conn.response :logger
 
-        builder.use FaradayMiddleware::OAuth2, @access_token
-        builder.use Faraday::Request::UrlEncoded
-        builder.use Faraday::Response::Mashify
-        #builder.use FaradayMiddleware::ParseXml,  :content_type => /\bxml$/
-        builder.adapter Faraday.default_adapter
+        conn.request :oauth2, @access_token
+        conn.request :url_encoded
+        conn.response :mashify
+
+        conn.response :xml, :content_type => /\bxml$/
+        conn.adapter Faraday.default_adapter
       end
       connection
     end
