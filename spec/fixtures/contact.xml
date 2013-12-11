@@ -1,0 +1,10 @@
+<Envelope>
+  <Body>
+    <RESULT>
+      <SUCCESS>TRUE</SUCCESS>
+      <RecipientId>12345</RecipientId>
+      <ORGANIZATION_ID>xyz257</ORGANIZATION_ID>
+    </RESULT>
+  </Body>
+</Envelope>
+
