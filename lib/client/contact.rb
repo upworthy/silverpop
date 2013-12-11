@@ -1,5 +1,3 @@
-require 'builder'
-
 module SilverPop
   class Client
     module Contact
