@@ -1,4 +1,4 @@
-require 'client'
+require 'silverpop/client'
 
 module SilverPop
   class << self
