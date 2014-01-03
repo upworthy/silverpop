@@ -55,4 +55,20 @@ describe SilverPop::Client::Reporting do
     end
   end
 
+  describe ".get_job_status" do
+    it "returns the job_status for the given job_id" do
+      stub_post("/XMLAPI?access_token=abc123").
+        with(:body => "<Envelope><Body><GetJobStatus><JOB_ID>1234</JOB_ID></GetJobStatus></Body></Envelope>").
+          to_return(:status => 200, :body => '<Envelope><Body><RESULT><SUCCESS>TRUE</SUCCESS>
+                    <JOB_ID>1234</JOB_ID><JOB_STATUS>COMPLETE</JOB_STATUS>
+                    <JOB_DESCRIPTION> Creating new contact source, Master Database</JOB_DESCRIPTION>
+                    <PARAMETERS><PARAMETER><NAME>NOT_ALLOWED</NAME><VALUE>0</VALUE></PARAMETER></PARAMETERS>
+                    </RESULT></Body></Envelope>', :headers => {'Content-type' => "text/xml"})
+
+
+      resp = @client.get_job_status(1234)
+      resp.Envelope.Body.RESULT.JOB_STATUS.should eql "COMPLETE"
+    end
+  end
+
 end
