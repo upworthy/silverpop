@@ -19,7 +19,8 @@ Gem::Specification.new do |gem|
   gem.email       = 'webmaster@upworthy.com'
   gem.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
   gem.files       = `git ls-files`.split("\n")
-  gem.homepage    = ''
+  gem.homepage    = 'http://www.github.com/upworthy/silverpop'
+  gem.licenses    = ['BSD-3-Clause']
   gem.name        = 'silverpop'
   gem.require_paths = ['lib']
   gem.summary     = gem.description
