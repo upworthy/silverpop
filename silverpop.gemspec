@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'faraday_middleware', '~> 0.8'
   gem.add_dependency 'hashie', '~> 2.0'
   gem.add_dependency 'builder', '~> 3.0'
+  gem.add_dependency 'multi_xml', '~> 0.5'
   gem.add_development_dependency 'oauth2'
   gem.add_development_dependency 'rdiscount'
   gem.add_development_dependency 'yard'
