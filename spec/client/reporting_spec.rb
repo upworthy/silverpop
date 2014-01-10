@@ -5,6 +5,36 @@ describe SilverPop::Client::Reporting do
     @client = SilverPop.new({access_token: "abc123",url: 'https://api1.silverpop.com'})
   end
 
+  describe ".get_sent_mailings_for_org" do
+    it "returns the mailingId for the given dates" do
+      stub_post("/XMLAPI?access_token=abc123").
+        with(:body => "<Envelope><Body><GetSentMailingsForOrg><DATE_START>1/1/2014 00:00:00</DATE_START><DATE_END>1/2/2014 23:59:59</DATE_END></GetSentMailingsForOrg></Body></Envelope>").
+        to_return(:status => 200, :body => fixture('sent_mailings_org.xml'), :headers => {'Content-type' => "text/xml"})
+
+      resp = @client.get_sent_mailings_for_org("1/1/2014 00:00:00", "1/2/2014 23:59:59")
+      resp.Envelope.Body.RESULT.Mailing[0].MailingId.should eql "5758"
+    end
+
+    it "returns the mailingId for the given dates when passing an option" do
+      stub_post("/XMLAPI?access_token=abc123").
+        with(:body => "<Envelope><Body><GetSentMailingsForOrg><PRIVATE/><DATE_START>1/1/2014 00:00:00</DATE_START><DATE_END>1/2/2014 23:59:59</DATE_END></GetSentMailingsForOrg></Body></Envelope>").
+        to_return(:status => 200, :body => fixture('sent_mailings_org.xml'), :headers => {'Content-type' => "text/xml"})
+
+      resp = @client.get_sent_mailings_for_org("1/1/2014 00:00:00", "1/2/2014 23:59:59", {PRIVATE: nil})
+      resp.Envelope.Body.RESULT.Mailing[0].MailingId.should eql "5758"
+    end
+
+    it "returns the SentMailingCount" do
+      stub_post("/XMLAPI?access_token=abc123").
+        with(:body => "<Envelope><Body><GetSentMailingsForOrg><MAILING_COUNT_ONLY/><DATE_START>1/1/2014 00:00:00</DATE_START><DATE_END>1/2/2014 23:59:59</DATE_END></GetSentMailingsForOrg></Body></Envelope>").
+        to_return(:status => 200, :body => "<Envelope><Body><RESULT><SUCCESS>TRUE</SUCCESS><SentMailingsCount>5758</SentMailingsCount></RESULT></Body></Envelope>", :headers => {'Content-type' => "text/xml"})
+
+      resp = @client.get_sent_mailings_for_org("1/1/2014 00:00:00", "1/2/2014 23:59:59", {MAILING_COUNT_ONLY: nil})
+      resp.Envelope.Body.RESULT.SentMailingsCount.should eql "5758"
+    end
+
+  end
+
   describe ".raw_recipient_data_export" do
     it "should return true when passing a MAILING_ID" do
       stub_post("/XMLAPI?access_token=abc123").

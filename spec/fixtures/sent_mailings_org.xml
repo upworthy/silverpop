@@ -1,0 +1,33 @@
+<Envelope>
+  <Body>
+    <RESULT>
+      <SUCCESS>TRUE</SUCCESS>
+      <Mailing>
+        <MailingId>5758</MailingId>
+        <ReportId>109118</ReportId>
+        <ScheduledTS>2011-06-14 10:54:06.0</ScheduledTS>
+        <MailingName><![CDATA[This is the mailing name]]></MailingName>
+        <ListName><![CDATA[This is the database name]]></ListName>
+        <ListId>4615</ListId>
+        <UserName> John Doe </UserName>
+        <SentTS/>
+        <NumSent>0</NumSent>
+        <Subject><![CDATA[Summer Sale]]></Subject>
+        <Visibility>Private</Visibility>
+      </Mailing>
+      <Mailing>
+        <MailingId>5758</MailingId>
+        <ReportId>109118</ReportId>
+        <ScheduledTS>2011-06-14 10:54:06.0</ScheduledTS>
+        <MailingName><![CDATA[My Mailing 2]]></MailingName>
+        <ListName><![CDATA[This is the database name 2]]></ListName>
+        <ListId>4616</ListId>
+        <UserName>John Doe</UserName>
+        <SentTS/>
+        <NumSent>0</NumSent>
+        <Subject><![CDATA[Summer Sale]]></Subject>
+        <Visibility>Private</Visibility>
+      </Mailing>
+    </RESULT>
+  </Body>
+</Envelope>
