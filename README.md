@@ -10,6 +10,8 @@ A Ruby wrapper for the SilverPop API
 
 ## Documentation
 
+[http://rdoc.info/gems/silverpop](http://rdoc.info/gems/silverpop)
+
 
 ## Usage Examples
     require 'silverpop'
