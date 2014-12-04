@@ -9,7 +9,7 @@ describe SilverPop do
 
   describe ".respond_to?" do
     it "should be true if method exists" do
-      SilverPop.respond_to?(:new, true).should be_true
+      expect(SilverPop.respond_to?(:new, true)).to be_true
     end
   end
 end
