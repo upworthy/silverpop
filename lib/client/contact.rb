@@ -37,7 +37,7 @@ module SilverPop
               }
             }
           }
-        response = post(xml, options)
+        response = post(xml)
       end
 
     end
