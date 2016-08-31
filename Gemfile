@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-group :development do
+group :development, :test do
   gem 'pry'
 end
 
