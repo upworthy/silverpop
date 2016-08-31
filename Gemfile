@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-group :test do
+group :development do
   gem 'pry'
+end
+
+group :test do
   gem 'rspec'
   gem 'simplecov', :require => false
   gem 'webmock'
