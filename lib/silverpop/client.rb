@@ -4,6 +4,7 @@ require 'silverpop/request'
 require 'client/contact'
 require 'client/reporting'
 require 'client/user'
+require 'client/relational_table'
 
 module SilverPop
   class Client
@@ -17,5 +18,6 @@ module SilverPop
     include SilverPop::Client::Contact
     include SilverPop::Client::Reporting
     include SilverPop::Client::User
+    include SilverPop::Client::RelationalTable
   end
 end

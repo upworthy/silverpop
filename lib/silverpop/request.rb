@@ -1,7 +1,7 @@
 module SilverPop
   module Request
-    def post(path, options={})
-      request(:post, path, options)
+    def post(body)
+      request(:post, body)
     end
 
     private
@@ -10,7 +10,7 @@ module SilverPop
     #
     # @param body [String] The formatted XML of the API call make sure to call builder.to_xml.
     # @return [XML] XML Body from the API call
-    def request(method, body, options)
+    def request(method, body)
       response = connection.send(method) do |request|
         request.url "/XMLAPI"
         request.headers['Content-type'] = "text/xml"

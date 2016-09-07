@@ -7,6 +7,7 @@ end
 require 'silverpop'
 require 'rspec'
 require 'webmock/rspec'
+require 'pry'
 
 def stub_post(url)
   stub_request(:post, silverpop_url(url))
