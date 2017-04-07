@@ -11,18 +11,20 @@ module SilverPop
       # @example Add a new email to the database and contact list
       #   s = SilverPop::Client.new(access_token)
       #   s.add_recipient({email: "test@example.com", firstname: "Hello"}, 12345, [4567])
-      def add_recipient(fields, list_id, contact_list_id, created_from=1, options={})
+      def add_recipient(fields, list_id, contact_list_id=nil, created_from=1, options={})
         builder = Builder::XmlMarkup.new
         xml = builder.Envelope {
           builder.Body {
             builder.AddRecipient {
               builder.LIST_ID list_id
               builder.CREATED_FROM  created_from
-              builder.CONTACT_LISTS {
-                contact_list_id.each do |id|
-                  builder.CONTACT_LIST_ID  id
-                end
-              }
+              if contact_list_id
+                builder.CONTACT_LISTS {
+                  contact_list_id.each do |id|
+                    builder.CONTACT_LIST_ID  id
+                  end
+                }
+              end
               unless options.empty?
                 options.each do |opt|
                   builder.tag! opt[0], opt[1]
