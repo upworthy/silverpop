@@ -37,6 +37,19 @@ module SilverPop
           }
         post(xml)
       end
+      def import_list(map_file,source_file,email=nil)
+        builder = Builder::XmlMarkup.new
+        xml = builder.Envelope {
+          builder.Body {
+            builder.ImportList {
+              builder.MAP_FILE map_file
+              builder.SOURCE_FILE source_file
+              builder.EMAIL email if email
+            }
+          }
+        }
+        post(xml)
+      end
     end
   end
 end
